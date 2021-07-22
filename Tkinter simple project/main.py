@@ -2,13 +2,14 @@ from tkinter import *
 
 window = Tk()
 
+window.title('Sqrt/Exp/Mod')
+
 # Canvas 1
 
-canvas1 = Canvas(window, width=400, height=300)
+canvas1 = Canvas(window, width=400, height=300, bg='#DAF7A6')
 canvas1.pack()
 
 # Entries (1, 2, 3)
-
 
 entry1 = Entry(window)
 entry2 = Entry(window)
@@ -20,19 +21,19 @@ canvas1.create_window(100, 100, window=entry2)
 canvas1.create_window(100, 150, window=entry3)
 
 # Functions
+class Delete:
+    def deleteEntries():
+        entry1.delete(0, END)
+        entry2.delete(0, END)
+        entry3.delete(0, END)
 
-def deleteEntries():
-    entry1.delete(0, END)
-    entry2.delete(0, END)
-    entry3.delete(0, END)
-
-def deleteOutputs():
-    label1 = Label(window, text="                             ")
-    canvas1.create_window(350, 50, window=label1)
-    label2 = Label(window, text="                             ")
-    canvas1.create_window(350, 100, window=label2)
-    label3 = Label(window, text="                             ")
-    canvas1.create_window(350, 150, window=label3)
+    def deleteOutputs():
+        label1 = Label(window, text="                     ")
+        canvas1.create_window(350, 50, window=label1)
+        label2 = Label(window, text="                     ")
+        canvas1.create_window(350, 100, window=label2)
+        label3 = Label(window, text="                     ")
+        canvas1.create_window(350, 150, window=label3)
 
 def getSquareRoot():
     x1 = entry1.get()
@@ -63,10 +64,10 @@ canvas1.create_window(240, 100, window=button2)
 button3 = Button(text=' Get the Modulo 10  ', command=getModulo10)
 canvas1.create_window(240, 150, window=button3)
 
-button4 = Button(text=' Clear Entries ', command=deleteEntries)
+button4 = Button(text=' Clear Entries ', command=Delete.deleteEntries)
 canvas1.create_window(76, 200, window=button4)
 
-button5 = Button(text=' Clear Results ', command=deleteOutputs)
+button5 = Button(text=' Clear Results ', command=Delete.deleteOutputs)
 canvas1.create_window(76, 250, window=button5)
 
 window.mainloop()
